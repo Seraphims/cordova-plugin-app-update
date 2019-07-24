@@ -71,6 +71,9 @@ public class DownloadApkThread implements Runnable {
                 // 创建连接
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
+                //加上下面,后端要设置response.setContentLengthLon,要不total为-1
+                conn.setRequestProperty("User-Agent", " Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36");
+
                 if(this.authentication.hasCredentials()){
                     conn.setRequestProperty("Authorization", this.authentication.getEncodedAuthorization());
                 }
